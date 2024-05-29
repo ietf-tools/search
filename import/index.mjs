@@ -15,7 +15,7 @@ async function main () {
 
   const ts = new Typesense.Client({
     'nodes': [{
-      'host': 'ts.dev.ietf.org',
+      'host': 'search-api.ietf.org',
       'port': '443',
       'protocol': 'https'
     }],

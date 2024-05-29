@@ -3,7 +3,7 @@ const Typesense = require('typesense')
 async function main () {
   const client = new Typesense.Client({
     'nodes': [{
-      'host': 'ts.dev.ietf.org',
+      'host': 'search-api.ietf.org',
       'port': '443',
       'protocol': 'https'
     }],

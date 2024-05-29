@@ -103,10 +103,10 @@ import TypesenseInstantSearchAdapter from 'typesense-instantsearch-adapter'
 
 const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   server: {
-    apiKey: "xf3EOyUrqUehUeqKiveKiVdv1wZu5fTi", // Be sure to use an API key that only allows search operations
+    apiKey: "ZW2NOeuc0qOE6CmLez2r5d1Gp5lpgH7x", // Be sure to use an API key that only allows search operations
     nodes: [
       {
-        host: "ts.dev.ietf.org",
+        host: "search-api.ietf.org",
         path: "",
         port: "443",
         protocol: "https",
