@@ -118,7 +118,7 @@ const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
   //  So you can pass any parameters supported by the search endpoint below.
   //  query_by is required.
   additionalSearchParameters: {
-    query_by: "rfcNumber,ref,filename,aliases,title,abstract,keywords,authors,adName,group,groupName,area,areaName",
+    query_by: "rfcNumber,ref,filename,title,abstract,keywords,authors,adName,group,groupName,area,areaName",
   }
 })
 
