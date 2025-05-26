@@ -1,0 +1,6 @@
+{
+  "collection": "docs",
+  "infix": "off,always,off,off,off,off,off,off,off,off,off",
+  "query_by": "rfc,filename,title,abstract,keywords,authors,adName,group,groupName,area,areaName",
+  "query_by_weights": "127,50,50,20,20,1,1,1,1,1,1"
+}
