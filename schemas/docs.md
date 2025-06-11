@@ -81,6 +81,30 @@ Contains all drafts and rfc documents.
         facet: true,
         optional: true
       },
+      // The BCP series number it is part of. (e.g. "123")
+      // Omit otherwise.
+      {
+        name: 'bcp',
+        type: 'string',
+        facet: true,
+        optional: true
+      },
+      // The STD series number it is part of. (e.g. "123")
+      // Omit otherwise.
+      {
+        name: 'std',
+        type: 'string',
+        facet: true,
+        optional: true
+      },
+      // The FYI series number it is part of. (e.g. "123")
+      // Omit otherwise.
+      {
+        name: 'fyi',
+        type: 'string',
+        facet: true,
+        optional: true
+      },
       // Number of pages
       {
         name: 'pages',
@@ -109,35 +133,25 @@ Contains all drafts and rfc documents.
         facet: true,
         optional: true
       },
-      // Group slug (e.g. "ntp")
+      // Working Group
+      // Object with properties "acronym", "name" and "full"
+      // e.g.: { acronym: "ntp", "name": "Network Time Protocols", full: "ntp - Network Time Protocols" }
       {
         name: 'group',
-        type: 'string',
+        type: 'object',
         facet: true,
         optional: true
       },
-      // Group full name (e.g. "Network Time Protocols")
-      {
-        name: 'groupName',
-        type: 'string',
-        facet: false,
-        optional: true
-      },
-      // Area slug (e.g. "mpls")
+      // Area
+      // Object with properties "acronym", "name" and "full"
+      // e.g.: { acronym: "mpls", "name": "Multiprotocol Label Switching", full: "mpls - Multiprotocol Label Switching" }
       {
         name: 'area',
-        type: 'string',
-        facet: true,
-        optional: true
-      },
-      // Area full name (e.g. "Multiprotocol Label Switching")
-      {
-        name: 'areaName',
-        type: 'string',
+        type: 'object',
         facet: false,
         optional: true
       },
-      // Stream slug (e.g. "ietf")
+      // Stream slug (e.g. "IETF")
       {
         name: 'stream',
         type: 'string',
@@ -158,6 +172,36 @@ Contains all drafts and rfc documents.
         name: 'adName',
         type: 'string',
         facet: true,
+        optional: true
+      },
+      // Whether the document is obsoleted by another document or not.
+      {
+        name: 'flags.obsoleted',
+        type: 'bool',
+        facet: true
+      },
+      // Whether the document is updated by another document or not.
+      {
+        name: 'flags.updated',
+        type: 'bool',
+        facet: true
+      },
+      // List of documents that obsolete this document.
+      // Array of strings. Use RFC number for RFCs. (e.g. ["123", "456"])
+      // Omit if none. Must be provided if "flags.obsoleted" is set to true.
+      {
+        name: 'obsoletedBy',
+        type: 'string[]',
+        facet: false,
+        optional: true
+      },
+      // List of documents that update this document.
+      // Array of strings. Use RFC number for RFCs. (e.g. ["123", "456"])
+      // Omit if none. Must be provided if "flags.updated" is set to true.
+      {
+        name: 'updatedBy',
+        type: 'string[]',
+        facet: false,
         optional: true
       },
       // Ranking value to use when no explicit sorting is used during search
