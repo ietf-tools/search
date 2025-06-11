@@ -3,4 +3,8 @@
 
 ## Schemas
 
-- [docs](schemas/docs.md)
+- [docs](schemas/docs.md) -  Documents (rfc, drafts)
+
+## Search Presets
+
+- [red](presets/red.md) - RFC-Editor Website
