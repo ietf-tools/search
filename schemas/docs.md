@@ -151,7 +151,7 @@ Contains all drafts and rfc documents.
         facet: false,
         optional: true
       },
-      // Stream slug (e.g. "IETF")
+      // Stream (e.g. "IETF")
       {
         name: 'stream',
         type: 'string',
