@@ -7,4 +7,4 @@
 
 ## Search Presets
 
-- [red](presets/red.md) - RFC-Editor Website
+- [red](presets/red.json) - RFC-Editor Website
