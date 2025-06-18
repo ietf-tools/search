@@ -204,6 +204,15 @@ Contains all drafts and rfc documents.
         facet: false,
         optional: true
       },
+      // Sanitized content of the document.
+      // Make sure to remove newlines, double whitespaces, symbols and tags.
+      {
+        name: 'content',
+        type: 'string',
+        facet: false,
+        optional: true,
+        store: false
+      },
       // Ranking value to use when no explicit sorting is used during search
       // Set to the RFC number for RFCs and the revision number for drafts
       // This ensures newer RFCs get listed first in the default search results (without a query)
