@@ -105,6 +105,15 @@ Contains all drafts and rfc documents.
         facet: true,
         optional: true
       },
+      // The total of RFCs in the subserie
+      // Omit if not part of a subseries
+      {
+        name: 'subserieTotal',
+        type: 'int32',
+        facet: false,
+        sort: false,
+        optional: true
+      },
       // Number of pages
       {
         name: 'pages',
