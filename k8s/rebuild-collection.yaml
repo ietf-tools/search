@@ -1,0 +1,15 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: rebuild-collection-job
+spec:
+  backoffLimit: 0
+  activeDeadlineSeconds: 86400
+  ttlSecondsAfterFinished: 3600
+  template:
+    spec:
+      containers:
+      - name: search-rebuild
+        image: ghcr.io/ietf-tools/search-rebuild:latest
+        command: []
+      restartPolicy: Never
