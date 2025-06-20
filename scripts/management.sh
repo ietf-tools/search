@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -z "$1" ] ; then
+if [ -z "$SCRIPT_PATH" ] ; then
     echo "Missing script argument!"
     exit 1
 fi
@@ -14,4 +14,4 @@ mv latest/schemas schemas
 mv latest/scripts scripts
 
 echo "Running script..."
-node $1
+node $SCRIPT_PATH
