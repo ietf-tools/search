@@ -3,7 +3,7 @@ import _ from 'lodash-es'
 import postgres from 'postgres'
 import { DateTime } from 'luxon'
 
-import docsSchema from '../../schemas/docs'
+import docsSchema from '../../schemas/docs.mjs'
 
 async function main () {
   // Connect to DB

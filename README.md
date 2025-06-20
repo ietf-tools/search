@@ -3,7 +3,7 @@
 
 ## Schemas
 
-- [docs](schemas/docs.js) -  Documents (rfc, drafts)
+- [docs](schemas/docs.mjs) -  Documents (rfc, drafts)
 
 ## Search Presets
 
