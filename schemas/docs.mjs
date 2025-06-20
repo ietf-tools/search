@@ -155,7 +155,7 @@ export default {
     {
       name: 'area',
       type: 'object',
-      facet: false,
+      facet: true,
       optional: true
     },
     // Stream (e.g. "IETF")
