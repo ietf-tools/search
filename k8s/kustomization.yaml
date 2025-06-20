@@ -1,3 +1,0 @@
-namespace: typesense
-resources:
-  - rebuild-collection-job.yaml

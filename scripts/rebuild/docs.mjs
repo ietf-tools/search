@@ -7,7 +7,7 @@ import docsSchema from '../../schemas/docs'
 
 async function main () {
   // Connect to DB
-  const sql = postgres(process.env.DB_CONNSTR, {
+  const sql = postgres(process.env.DATATRACKER_DB_CONNSTR, {
     ssl: 'prefer',
     connection: {
       search_path: 'datatracker'
@@ -22,7 +22,7 @@ async function main () {
       'port': '443',
       'protocol': 'https'
     }],
-    'apiKey': process.env.TS_API_KEY,
+    'apiKey': process.env.TYPESENSE_API_KEY,
     'connectionTimeoutSeconds': 300
   })
 
@@ -100,7 +100,7 @@ async function main () {
   `.cursor(100, async rows => {
     console.info(`Importing chunk ${idx * 100}-${(idx + 1) * 100}...`)
     const docs = []
-    
+
     for (const r of rows) {
       if (r.groupacronym === 'none') {
         r.areaacronym = null
