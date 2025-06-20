@@ -13,5 +13,5 @@ mv latest/presets presets
 mv latest/schemas schemas
 mv latest/scripts scripts
 
-echo "Running script..."
+echo "Running $SCRIPT_PATH script..."
 node $SCRIPT_PATH
