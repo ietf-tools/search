@@ -195,6 +195,8 @@ async function main () {
     await ts.collections('docs').documents().import(docs, { action: 'create', batch_size: 100 })
     idx++
   })
+
+  await sql.end()
 }
 
 main()
