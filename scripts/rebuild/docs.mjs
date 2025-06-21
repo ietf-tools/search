@@ -177,7 +177,7 @@ async function main () {
         state: r.states?.map(s => s[1]) ?? [],
         ...subseries,
         ...r.stdlevelname && { stdlevelname: r.stdlevelname },
-        ...r.streamname && { stream: r.streamname },
+        ...r.streamname && { stream: { name: r.streamname, slug: r.stream_id } },
         ...r.authors.length > 0 && {
           authors: r.authors.map(a => ({
             name: a[0],

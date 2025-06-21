@@ -158,10 +158,12 @@ export default {
       facet: true,
       optional: true
     },
-    // Stream (e.g. "IETF")
+    // Stream
+    // Object with properties "slug" and "name"
+    // e.g.: { slug: "ietf", "name": "IETF" }
     {
       name: 'stream',
-      type: 'string',
+      type: 'object',
       facet: true,
       optional: true
     },
