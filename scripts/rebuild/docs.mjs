@@ -171,7 +171,7 @@ async function main () {
         ...r.expires && { expires: DateTime.fromJSDate(r.expires).toUnixInteger() },
         ...r.publicationdate && { publicationDate: DateTime.fromJSDate(r.publicationdate).toUnixInteger() },
         ...r.groupacronym && { group: { acronym: r.groupacronym, name: r.groupname, full: `${r.groupacronym} - ${r.groupname}` } },
-        ...r.areaacronym && r.streamname !== 'ISE' && r.streamname !== 'IAB' && { area: { acronym: r.areaacronym, name: r.areaname, full: `${r.areaacronym} - ${r.areaname}` } },
+        ...r.areaacronym && !['ISE', 'IAB', 'IRTF'].includes(r.streamname) && { area: { acronym: r.areaacronym, name: r.areaname, full: `${r.areaacronym} - ${r.areaname}` } },
         keywords: [],
         type: r.type_id,
         state: r.states?.map(s => s[1]) ?? [],
