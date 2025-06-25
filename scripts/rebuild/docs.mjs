@@ -122,7 +122,7 @@ async function main () {
               subseries.fyi = subserie[1].substring(3)
               break
           }
-          subseries.subserieTotal = subseriesCount[subserie[1]] || 1
+          subseries.total = subseriesCount[subserie[1]] || 1
         }
       }
 
@@ -175,8 +175,8 @@ async function main () {
         keywords: [],
         type: r.type_id,
         state: r.states?.map(s => s[1]) ?? [],
-        ...subseries,
-        ...r.stdlevelname && { stdlevelname: r.stdlevelname },
+        subseries,
+        ...r.stdlevelname && { status: { slug: r.std_level_id, name: r.stdlevelname } },
         ...r.streamname && { stream: { name: r.streamname, slug: r.stream_id } },
         ...r.authors.length > 0 && {
           authors: r.authors.map(a => ({

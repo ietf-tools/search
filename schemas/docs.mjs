@@ -71,18 +71,19 @@ export default {
       facet: true,
       optional: true
     },
-    // Standard Level Name (e.g. "Proposed Standard", "Informational", etc.)
-    // Use the full name, not the slug
+    // Status (Standard Level Name)
+    // Object with properties "slug" and "name"
+    // e.g.: { slug: "std", "name": "Internet Standard" }
     {
-      name: 'stdlevelname',
-      type: 'string',
+      name: 'status',
+      type: 'object',
       facet: true,
       optional: true
     },
     // The BCP series number it is part of. (e.g. "123")
     // Omit otherwise.
     {
-      name: 'bcp',
+      name: 'subseries.bcp',
       type: 'string',
       facet: true,
       optional: true
@@ -90,7 +91,7 @@ export default {
     // The STD series number it is part of. (e.g. "123")
     // Omit otherwise.
     {
-      name: 'std',
+      name: 'subseries.std',
       type: 'string',
       facet: true,
       optional: true
@@ -98,25 +99,19 @@ export default {
     // The FYI series number it is part of. (e.g. "123")
     // Omit otherwise.
     {
-      name: 'fyi',
+      name: 'subseries.fyi',
       type: 'string',
       facet: true,
       optional: true
     },
-    // The total of RFCs in the subserie
+    // The total of RFCs in the subseries
     // Omit if not part of a subseries
     {
-      name: 'subserieTotal',
+      name: 'subseries.total',
       type: 'int32',
       facet: false,
       sort: false,
       optional: true
-    },
-    // Number of pages
-    {
-      name: 'pages',
-      type: 'int32',
-      facet: false
     },
     // Date of the document, in unix epoch seconds (can be negative for < 1970)
     {
