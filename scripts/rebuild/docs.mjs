@@ -152,9 +152,11 @@ async function main () {
         const resp = await fetch(`https://www.rfc-editor.org/rfc/rfc${r.rfc_number}.txt`)
         if (resp.ok) {
           content = (await resp.text()).trim().replaceAll(/\. |! /g, ' ').replaceAll(/<--|-->|--+|\+|\.\.+/g, '').replaceAll(/\[[a-z0-9 -]+\]/gi, '').replaceAll(/[0-9]+\.[0-9]+(\.[0-9]+)?/gi, '').replace(/\s+/g, ' ')
+        } else {
+          throw new Error(resp.statusText)
         }
       } catch (err) {
-        console.warn(`Failed to fetch ${r.rfc_number}: ${err.message}`)
+        console.warn(`Failed to fetch ${r.rfc_number} contents: ${err.message}`)
       }
 
       // -> Add to collection
