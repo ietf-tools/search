@@ -80,28 +80,21 @@ export default {
       facet: true,
       optional: true
     },
-    // The BCP series number it is part of. (e.g. "123")
+    // The subseries it is part of. (e.g. "BCP")
     // Omit otherwise.
     {
-      name: 'subseries.bcp',
+      name: 'subseries.acronym',
       type: 'string',
       facet: true,
       optional: true
     },
-    // The STD series number it is part of. (e.g. "123")
+    // The subseries number it is part of. (e.g. 123)
     // Omit otherwise.
     {
-      name: 'subseries.std',
-      type: 'string',
+      name: 'subseries.number',
+      type: 'int32',
       facet: true,
-      optional: true
-    },
-    // The FYI series number it is part of. (e.g. "123")
-    // Omit otherwise.
-    {
-      name: 'subseries.fyi',
-      type: 'string',
-      facet: true,
+      sort: true,
       optional: true
     },
     // The total of RFCs in the subseries

@@ -111,18 +111,12 @@ async function main () {
       const subseries = {}
       if (r.subseries?.length) {
         for (const subserie of r.subseries) {
-          switch (subserie[0]) {
-            case 'bcp':
-              subseries.bcp = subserie[1].substring(3)
-              break
-            case 'std':
-              subseries.std = subserie[1].substring(3)
-              break
-            case 'fyi':
-              subseries.fyi = subserie[1].substring(3)
-              break
+          const subseriesNumber = parseInt(subserie[1].substring(3))
+          if (!isNaN(subseriesNumber) && subseriesNumber > 0) {
+            subseries.acronym = subserie[0]
+            subseries.number = subseriesNumber
+            subseries.total = subseriesCount[subserie[1]] || 1
           }
-          subseries.total = subseriesCount[subserie[1]] || 1
         }
       }
 
