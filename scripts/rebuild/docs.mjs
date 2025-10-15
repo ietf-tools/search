@@ -8,10 +8,7 @@ import docsSchema from '../../schemas/docs.mjs'
 async function main () {
   // Connect to DB
   const sql = postgres(process.env.DATATRACKER_DB_CONNSTR, {
-    ssl: 'prefer',
-    connection: {
-      search_path: 'datatracker'
-    }
+    ssl: 'prefer'
   })
 
   // Typesense Client
