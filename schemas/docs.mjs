@@ -171,6 +171,12 @@ export default {
       facet: true,
       optional: true
     },
+    // Whether the document should be hidden by default in search results or not.
+    {
+      name: 'flags.hiddenDefault',
+      type: 'bool',
+      facet: true
+    },
     // Whether the document is obsoleted by another document or not.
     {
       name: 'flags.obsoleted',
