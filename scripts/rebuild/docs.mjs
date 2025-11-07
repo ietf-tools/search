@@ -119,6 +119,7 @@ async function main () {
 
       // -> Flags
       const flags = {
+        hiddenDefault: false,
         obsoleted: false,
         updated: false
       }
@@ -128,6 +129,7 @@ async function main () {
       if (r.flags?.length) {
         for (const flag of r.flags) {
           if (flag[0] === 'obs') {
+            flags.hiddenDefault = true
             flags.obsoleted = true
             obsoletedBy.push(flag[1])
           } else if (flag[0] === 'updates') {
@@ -135,6 +137,10 @@ async function main () {
             updatedBy.push(flag[1])
           }
         }
+      }
+
+      if (r.std_level_id === 'hist') {
+        flags.hiddenDefault = true
       }
 
       // -> Format content
