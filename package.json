@@ -6,6 +6,7 @@
     "luxon": "3.6.1",
     "postal-mime": "2.6.0",
     "postgres": "3.4.7",
+    "string-strip-html": "13.5.0",
     "typesense": "2.0.3"
   }
 }

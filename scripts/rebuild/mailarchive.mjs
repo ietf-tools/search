@@ -4,6 +4,7 @@ import postgres from 'postgres'
 import { DateTime } from 'luxon'
 import fs from 'node:fs/promises'
 import PostalMime from 'postal-mime'
+import { stripHtml } from 'string-strip-html'
 
 import mlSchema from '../../schemas/mailarchive.mjs'
 
@@ -54,7 +55,11 @@ async function main () {
       try {
         const contentBuffer = await fs.readFile(`/mnt/mailarchive/data/archive/${r.listname}/${r.hashcode}`)
         const email = await PostalMime.parse(contentBuffer)
-        content = email.text
+        if (email.text) {
+          content = email.text 
+        } else if (email.html) {
+          content = stripHtml(email.html).result
+        }
       } catch (err) {
         console.warn(`Failed to fetch message content for ${r.hashcode}`)
       }
@@ -65,7 +70,7 @@ async function main () {
         subject: r.base_subject,
         from: r.frm,
         to: r.to,
-        content,
+        content: content ?? '',
         list: r.listname,
         date: r.date ? DateTime.fromJSDate(r.date).toUnixInteger() : 0
       })
