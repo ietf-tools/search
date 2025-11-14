@@ -44,7 +44,6 @@ async function main () {
       list.name AS listname
     FROM archive_message msg
     LEFT JOIN archive_emaillist list ON (msg.email_list_id = list.id)
-    LIMIT 1000
   `.cursor(100, async rows => {
     console.info(`Importing chunk ${idx * 100}-${(idx + 1) * 100}...`)
     const items = []
