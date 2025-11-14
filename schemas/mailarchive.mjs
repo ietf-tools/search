@@ -5,9 +5,9 @@ export default {
   name: 'mailarchive',
   enable_nested_fields: true,
   fields: [
-    // Hashcode
+    // Hashcode (ID)
     {
-      name: 'hash',
+      name: 'id',
       type: 'string',
       facet: false
     },

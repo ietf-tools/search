@@ -4,6 +4,7 @@
   "dependencies": {
     "lodash-es": "4.17.21",
     "luxon": "3.6.1",
+    "postal-mime": "2.6.0",
     "postgres": "3.4.7",
     "typesense": "2.0.3"
   }
