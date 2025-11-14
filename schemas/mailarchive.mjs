@@ -36,11 +36,9 @@ export default {
       facet: false
     },
     // Mailing List
-    // Object with properties "id" and "name"
-    // e.g.: { id: 726, "name": "tools-discuss" }
     {
       name: 'list',
-      type: 'object',
+      type: 'string',
       facet: true
     },
     // Message timestamp, in unix epoch seconds (can be negative for < 1970)
