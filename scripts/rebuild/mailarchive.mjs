@@ -44,8 +44,8 @@ async function main () {
       list.name AS listname
     FROM archive_message msg
     LEFT JOIN archive_emaillist list ON (msg.email_list_id = list.id)
-  `.cursor(100, async rows => {
-    console.info(`Importing chunk ${idx * 100}-${(idx + 1) * 100}...`)
+  `.cursor(50, async rows => {
+    console.info(`Importing chunk ${idx * 50}-${(idx + 1) * 50}...`)
     const items = []
 
     for (const r of rows) {
@@ -84,7 +84,7 @@ async function main () {
       })
     }
 
-    await ts.collections('mailarchive').documents().import(items, { action: 'create', batch_size: 100 })
+    await ts.collections('mailarchive').documents().import(items, { action: 'create', batch_size: 50 })
     idx++
   })
 
