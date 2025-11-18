@@ -49,13 +49,21 @@ async function main () {
     const items = []
 
     for (const r of rows) {
-      // Fetch message content
+      // Parse email
       let content = ''
+      let fromName = r.frm
+      let fromEmail = ''
       try {
         const contentBuffer = await fs.readFile(`/mnt/mailarchive/data/archive/${r.listname}/${r.hashcode}`)
         const email = await PostalMime.parse(contentBuffer)
+
+        // From
+        fromName = email.from.name ?? r.frm,
+        fromEmail = email.from.address ?? ''
+
+        // Message content
         if (email.text) {
-          content = email.text 
+          content = email.text
         } else if (email.html) {
           content = stripHtml(email.html).result
         }
@@ -67,7 +75,8 @@ async function main () {
       items.push({
         id: r.hashcode,
         subject: r.base_subject,
-        from: r.frm,
+        fromName,
+        fromEmail,
         to: r.to,
         content: content ?? '',
         list: r.listname,

@@ -17,9 +17,15 @@ export default {
       type: 'string',
       facet: false
     },
-    // From header
+    // From Name
     {
-      name: 'from',
+      name: 'fromName',
+      type: 'string',
+      facet: false
+    },
+    // From Email
+    {
+      name: 'fromEmail',
       type: 'string',
       facet: false
     },
