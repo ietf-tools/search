@@ -68,12 +68,19 @@ async function main () {
         WHERE dds.document_id = doc.id AND ds.type_id = 'rfc'
       ) AS states,
       array(
+        SELECT ARRAY[pp.name, ra.titlepage_name, ra.affiliation]
+        FROM doc_rfcauthor ra
+        LEFT JOIN person_person pp on ra.person_id = pp.id
+        WHERE ra.document_id = doc.id
+        ORDER BY ra."order"
+      ) AS rfcAuthors,
+      array(
         SELECT ARRAY[pp.name, da.affiliation]
         FROM doc_documentauthor da
         LEFT JOIN person_person pp on da.person_id = pp.id
         WHERE da.document_id = doc.id
         ORDER BY da."order"
-      ) AS authors,
+      ) AS docAuthors,
       array(
         SELECT ARRAY[ddrd.type_id, ddrd.name]
         FROM doc_relateddocument drd
@@ -103,6 +110,11 @@ async function main () {
         r.areaacronym = null
         r.areaname = null
       }
+
+      // -> Authors
+      const authors = r.rfcAuthors.length > 0
+        ? r.rfcAuthors.map(a => ({ name: a[0], titlepageName: a[1], affiliation: a[2] }))
+        : r.docAuthors.map(a => ({ name: a[0], titlepageName: '', affiliation: a[1] }))
 
       // -> Subseries
       const subseries = {}
@@ -177,12 +189,7 @@ async function main () {
         subseries,
         ...r.stdlevelname && { status: { slug: r.std_level_id, name: r.stdlevelname } },
         ...r.streamname && { stream: { name: r.streamname, slug: r.stream_id } },
-        ...r.authors.length > 0 && {
-          authors: r.authors.map(a => ({
-            name: a[0],
-            affiliation: a[1]
-          }))
-        },
+        ...authors.length > 0 && authors,
         ...r.adname && { adName: r.adname },
         flags,
         ...obsoletedBy.length > 0 && { obsoletedBy },

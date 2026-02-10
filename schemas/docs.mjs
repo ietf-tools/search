@@ -156,8 +156,8 @@ export default {
       optional: true
     },
     // List of authors
-    // Array of objects with properties "name" and "affiliation"
-    // e.g.: [{ name: "John Doe", affiliation: "ACME Inc." }, { name: "Ada Lovelace", affiliation: "Babbage Corps." }]
+    // Array of objects with properties "name", "titlepageName", and "affiliation"
+    // e.g.: [{ name: "John Doe", titlepageName: "J. Doe", affiliation: "ACME Inc." }, { name: "Ada Lovelace", titlepageName: "A. Lovelace", affiliation: "Babbage Corps." }]
     {
       name: 'authors',
       type: 'object[]',
